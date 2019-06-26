@@ -12,23 +12,35 @@ namespace CSh_WinF_Incricao
 {
     public partial class Inscrever : Form
     {
+        public static List<Concorrente> listaConcorrentes = new List<Concorrente>(); //Tem de ser static para poder ser acedido noutras classes
         public Inscrever()
         {
             InitializeComponent();
-            btn_inserir.Enabled = false;
+            Dictionary<string, string> test = new Dictionary<string, string>();
+            test.Add("1", "Eletronica");
+            test.Add("2", "Informatica");
+            test.Add("3", "Mecanica");
+            cbx_cruso.DataSource = new BindingSource(test, null);
+            cbx_cruso.DisplayMember = "Value";
+            cbx_cruso.ValueMember = "Key";
+
+            // Get combobox selection (in handler)
+            curso = ((KeyValuePair<string, string>)cbx_cruso.SelectedItem).Value;
+
+            rdb_feminino.Checked = true;
         }
 
-        public static List<Concorrente> listaConcorrentes = new List<Concorrente>();
+        
         private string curso;
         private string tempoDia;
         private string nome;
-        private DateTime dataNasc;
+        private string dataNasc;
         private string loc;
         private string sexo;
 
         private void btn_inserir_Click(object sender, EventArgs e)
         {
-            curso = txt_curso.Text;
+            curso = cbx_cruso.Text;
             if (rdb_diurno.Checked)
             {
                 tempoDia = "Diurno";
@@ -37,7 +49,7 @@ namespace CSh_WinF_Incricao
                 tempoDia = "Nocturno";
             }
             nome = txt_nome.Text;
-            dataNasc = DateTime.Parse(dt_dataNasc.Text);
+            dataNasc = dt_dataNasc.Value.ToString("yyyy-MM-dd");
             loc = txt_loca.Text;
             if (rdb_masculino.Checked)
             {
@@ -46,28 +58,21 @@ namespace CSh_WinF_Incricao
             {
                 sexo = "Feminino";
             }
-            Concorrente concorrente = new Concorrente(curso, tempoDia, nome, dataNasc, loc, sexo);
-            listaConcorrentes.Add(concorrente);
-            MessageBox.Show(concorrente.ToString());
-            txt_curso.Text = "";
-            rdb_diurno.Checked = false;
-            rdb_nocturno.Checked = false;
-            txt_nome.Text = "";
-            dt_dataNasc.Text = "";
-            txt_loca.Text = "";
-            rdb_feminino.Checked = false;
-            rdb_masculino.Checked = false;
+            Concorrente c = new Concorrente(curso, tempoDia, nome, dataNasc, loc, sexo);
+            listaConcorrentes.Add(c);
+            MessageBox.Show(c.ToString());
+            btn_limpar_Click(sender, e);
         }
 
         private void btn_limpar_Click(object sender, EventArgs e)
         {
-            txt_curso.Text = "";
-            rdb_diurno.Checked = false;
+            cbx_cruso.Text = "";
+            rdb_diurno.Checked = true;
             rdb_nocturno.Checked = false;
             txt_nome.Text = "";
             dt_dataNasc.Text = "";
             txt_loca.Text = "";
-            rdb_feminino.Checked = false;
+            rdb_feminino.Checked = true;
             rdb_masculino.Checked = false;
         }
 
@@ -77,24 +82,9 @@ namespace CSh_WinF_Incricao
             Menu mainMenu = new Menu();
             mainMenu.Show();
         }
-
-
-        //Verificacion of Inputs
-        private void Txt_curso_TextChanged(object sender, EventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            btn_inserir.Enabled = txt_curso.Text != "" && txt_nome.Text != "" && txt_loca.Text != "";
+            Application.Exit();
         }
-
-        private void Txt_nome_TextChanged(object sender, EventArgs e)
-        {
-            btn_inserir.Enabled = txt_curso.Text != "" && txt_nome.Text != "" && txt_loca.Text != "";
-        }
-
-        private void Txt_loca_TextChanged(object sender, EventArgs e)
-        {
-            btn_inserir.Enabled = txt_curso.Text != "" && txt_nome.Text != "" && txt_loca.Text != "";
-        }
-
-
     }
 }

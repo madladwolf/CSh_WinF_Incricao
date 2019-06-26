@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbx_cruso = new System.Windows.Forms.ComboBox();
             this.rdb_nocturno = new System.Windows.Forms.RadioButton();
             this.rdb_diurno = new System.Windows.Forms.RadioButton();
-            this.txt_curso = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dt_dataNasc = new System.Windows.Forms.DateTimePicker();
@@ -61,9 +61,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbx_cruso);
             this.groupBox1.Controls.Add(this.rdb_nocturno);
             this.groupBox1.Controls.Add(this.rdb_diurno);
-            this.groupBox1.Controls.Add(this.txt_curso);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(15, 25);
             this.groupBox1.Name = "groupBox1";
@@ -71,6 +71,14 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Curso";
+            // 
+            // cbx_cruso
+            // 
+            this.cbx_cruso.FormattingEnabled = true;
+            this.cbx_cruso.Location = new System.Drawing.Point(79, 28);
+            this.cbx_cruso.Name = "cbx_cruso";
+            this.cbx_cruso.Size = new System.Drawing.Size(188, 21);
+            this.cbx_cruso.TabIndex = 6;
             // 
             // rdb_nocturno
             // 
@@ -93,14 +101,6 @@
             this.rdb_diurno.TabStop = true;
             this.rdb_diurno.Text = "Diurno";
             this.rdb_diurno.UseVisualStyleBackColor = true;
-            // 
-            // txt_curso
-            // 
-            this.txt_curso.Location = new System.Drawing.Point(79, 28);
-            this.txt_curso.Name = "txt_curso";
-            this.txt_curso.Size = new System.Drawing.Size(189, 20);
-            this.txt_curso.TabIndex = 3;
-            this.txt_curso.TextChanged += new System.EventHandler(this.Txt_curso_TextChanged);
             // 
             // label2
             // 
@@ -131,6 +131,8 @@
             // dt_dataNasc
             // 
             this.dt_dataNasc.Location = new System.Drawing.Point(82, 46);
+            this.dt_dataNasc.MaxDate = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.dt_dataNasc.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dt_dataNasc.Name = "dt_dataNasc";
             this.dt_dataNasc.Size = new System.Drawing.Size(189, 20);
             this.dt_dataNasc.TabIndex = 10;
@@ -141,7 +143,6 @@
             this.txt_loca.Name = "txt_loca";
             this.txt_loca.Size = new System.Drawing.Size(189, 20);
             this.txt_loca.TabIndex = 9;
-            this.txt_loca.TextChanged += new System.EventHandler(this.Txt_loca_TextChanged);
             // 
             // txt_nome
             // 
@@ -149,7 +150,6 @@
             this.txt_nome.Name = "txt_nome";
             this.txt_nome.Size = new System.Drawing.Size(189, 20);
             this.txt_nome.TabIndex = 7;
-            this.txt_nome.TextChanged += new System.EventHandler(this.Txt_nome_TextChanged);
             // 
             // rdb_feminino
             // 
@@ -259,7 +259,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rdb_nocturno;
         private System.Windows.Forms.RadioButton rdb_diurno;
-        private System.Windows.Forms.TextBox txt_curso;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txt_loca;
         private System.Windows.Forms.TextBox txt_nome;
@@ -272,5 +271,6 @@
         private System.Windows.Forms.Button btn_inserir;
         private System.Windows.Forms.Button btn_voltar;
         private System.Windows.Forms.DateTimePicker dt_dataNasc;
+        private System.Windows.Forms.ComboBox cbx_cruso;
     }
 }

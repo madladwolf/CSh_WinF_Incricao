@@ -30,7 +30,6 @@
         {
             this.lsb_listar = new System.Windows.Forms.ListBox();
             this.btn_voltar = new System.Windows.Forms.Button();
-            this.btn_export = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lsb_listar
@@ -38,36 +37,24 @@
             this.lsb_listar.FormattingEnabled = true;
             this.lsb_listar.Location = new System.Drawing.Point(13, 13);
             this.lsb_listar.Name = "lsb_listar";
-            this.lsb_listar.Size = new System.Drawing.Size(235, 264);
+            this.lsb_listar.Size = new System.Drawing.Size(515, 264);
             this.lsb_listar.TabIndex = 0;
-            this.lsb_listar.SelectedIndexChanged += new System.EventHandler(this.Lsb_listar_SelectedIndexChanged);
             // 
             // btn_voltar
             // 
-            this.btn_voltar.Location = new System.Drawing.Point(13, 283);
+            this.btn_voltar.Location = new System.Drawing.Point(13, 284);
             this.btn_voltar.Name = "btn_voltar";
-            this.btn_voltar.Size = new System.Drawing.Size(99, 43);
+            this.btn_voltar.Size = new System.Drawing.Size(515, 23);
             this.btn_voltar.TabIndex = 1;
             this.btn_voltar.Text = "Voltar";
             this.btn_voltar.UseVisualStyleBackColor = true;
             this.btn_voltar.Click += new System.EventHandler(this.Btn_voltar_Click);
             // 
-            // btn_export
-            // 
-            this.btn_export.Location = new System.Drawing.Point(149, 283);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(99, 43);
-            this.btn_export.TabIndex = 2;
-            this.btn_export.Text = "Exportar";
-            this.btn_export.UseVisualStyleBackColor = true;
-            this.btn_export.Click += new System.EventHandler(this.Btn_export_Click);
-            // 
             // Listar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 338);
-            this.Controls.Add(this.btn_export);
+            this.ClientSize = new System.Drawing.Size(540, 329);
             this.Controls.Add(this.btn_voltar);
             this.Controls.Add(this.lsb_listar);
             this.Name = "Listar";
@@ -80,6 +67,5 @@
 
         private System.Windows.Forms.ListBox lsb_listar;
         private System.Windows.Forms.Button btn_voltar;
-        private System.Windows.Forms.Button btn_export;
     }
 }
